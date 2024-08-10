@@ -1,20 +1,72 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useFonts } from "expo-font";
+import { View, Text } from "react-native";
+import SignUp from "./screens/signup";
+import Login from "./screens/Login";
+import FaceRegister from "./screens/faceRegister"; 
+import FaceConfirm from "./screens/faceConfirm";
+import CreateNotes from "./screens/createNotes"
 
-export default function App() {
+const Stack = createNativeStackNavigator();
+
+function App() {
+  const [hideSplashScreen, setHideSplashScreen] = useState(false);
+
+  const [fontsLoaded] = useFonts({
+    "Poppins-Regular": require("./assets/fonts/Poppins-Regular.ttf"),
+    "Poppins-Medium": require("./assets/fonts/Poppins-Medium.ttf"),
+    "Poppins-Bold": require("./assets/fonts/Poppins-Bold.ttf"),
+  });
+
+  useEffect(() => {
+    if (fontsLoaded) {
+      setHideSplashScreen(true);
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text>Loading...</Text>
+      </View>
+    );
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      {hideSplashScreen ? (
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen
+            name="SignUp"
+            component={SignUp}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Login" // Add Login screen to the stack
+            component={Login}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+          name="faceRegister"
+          component={FaceRegister}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+        name="faceConfirm"
+        component={FaceConfirm}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="createNotes"
+        component={CreateNotes}
+        options={{ headerShown: false }}
+      />
+        </Stack.Navigator>
+      ) : null}
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;

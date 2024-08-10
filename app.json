@@ -9,7 +9,21 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#ffffff",
+      "fonts": [
+        {
+          "asset": "fonts/Poppins-Medium.ttf",
+          "family": "Poppins-Medium"
+        },
+        {
+          "asset": "fonts/Poppins-Regular.ttf",
+          "family": "Poppins-Regular"
+        },
+        {
+          "asset": "fonts/Poppins-Bold.ttf",
+          "family": "Poppins-Bold"
+        }
+      ]
     },
     "ios": {
       "supportsTablet": true
