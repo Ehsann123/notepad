@@ -15,12 +15,19 @@ const Stack = createNativeStackNavigator();
 function App() {
   const [hideSplashScreen, setHideSplashScreen] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [addNote, setAddNote] = useState([]);
+  const [noteValue, setNoteValue] = useState('');
 
   const [fontsLoaded] = useFonts({
     "Poppins-Regular": require("./assets/fonts/Poppins-Regular.ttf"),
     "Poppins-Medium": require("./assets/fonts/Poppins-Medium.ttf"),
     "Poppins-Bold": require("./assets/fonts/Poppins-Bold.ttf"),
   });
+  function handleAddNotes(addNewNote){
+    const newNote = [...addNote, addNewNote]
+    setAddNote(newNote)
+  }
+
 
   useEffect(() => {
     const checkAuthStatus = async () => {
@@ -81,6 +88,12 @@ function App() {
               <Stack.Screen
                 name="faceConfirm"
                 component={FaceConfirm}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen 
+                name="createNotes"
+                component={CreateNotes} 
+                
                 options={{ headerShown: false }}
               />
             </>

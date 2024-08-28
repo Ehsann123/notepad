@@ -2,6 +2,7 @@ import React from "react";
 import { Text, StyleSheet, View } from "react-native";
 import { Image } from "expo-image";
 import { Color, FontFamily } from "../GlobalStyles";// Assuming you have GlobalStyles for consistency
+import { TextInput } from 'react-native';
 
 const CreateNotes = () => {
   return (

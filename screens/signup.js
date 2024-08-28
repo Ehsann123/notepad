@@ -3,6 +3,7 @@ import { Text, StyleSheet, Pressable, View } from "react-native";
 import { Image } from "expo-image";
 import { FontSize, FontFamily, Color, GlobalStyles } from "../GlobalStyles";
 import { useNavigation } from '@react-navigation/native';
+import { TextInput } from 'react-native';
 
 const SignUp = () => {
   const navigation = useNavigation();
@@ -36,9 +37,13 @@ const SignUp = () => {
           contentFit="cover"
           source={require("../assets/email.svg")}
         />
-        <Text style={[styles.inputText, GlobalStyles.fontPoppinsRegular, GlobalStyles.colorWhite]}>
-          Yourname@gmail.com
-        </Text>
+        <TextInput
+          style={[styles.inputText, GlobalStyles.fontPoppinsRegular, GlobalStyles.colorWhite]}
+          placeholder="Yourname@gmail.com"
+          placeholderTextColor="#fff"
+          keyboardType="email-address"
+          autoCapitalize="none"
+        />
       </View>
 
       <View style={styles.inputContainer}>
@@ -47,9 +52,13 @@ const SignUp = () => {
           contentFit="cover"
           source={require("../assets/password.svg")}
         />
-        <Text style={[styles.inputText, GlobalStyles.fontPoppinsRegular, GlobalStyles.colorWhite]}>
-          Password
-        </Text>
+        <TextInput
+          style={[styles.inputText, GlobalStyles.fontPoppinsRegular, GlobalStyles.colorWhite]}
+          placeholder="your password"
+          placeholderTextColor="#fff"
+          keyboardType="email-address"
+          autoCapitalize="none"
+        />
       </View>
 
       <Pressable
@@ -63,13 +72,13 @@ const SignUp = () => {
 
 
       <Pressable
-  style={styles.signInLink}
-  onPress={() => navigation.navigate('Login')} // Navigate to the Login screen
->
-  <Text style={[styles.subtitle, GlobalStyles.fontPoppinsRegular, GlobalStyles.colorWhite]}>
-    Already Have An Account? <Text style={styles.signInText}>SIGN IN</Text>
-  </Text>
-</Pressable>
+        style={styles.signInLink}
+        onPress={() => navigation.navigate('Login')} // Navigate to the Login screen
+      >
+        <Text style={[styles.subtitle, GlobalStyles.fontPoppinsRegular, GlobalStyles.colorWhite]}>
+          Already Have An Account? <Text style={styles.signInText}>SIGN IN</Text>
+        </Text>
+      </Pressable>
 
       <Text style={[styles.footerText, GlobalStyles.fontPoppinsRegular, GlobalStyles.colorWhite]}>
         Note pad created by Ehsan

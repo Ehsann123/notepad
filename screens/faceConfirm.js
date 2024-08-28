@@ -38,10 +38,7 @@ const FaceConfirm = () => {
         style={styles.continueButton}
         onPress={() => navigation.navigate("createNotes")} 
       >
-        {/* <LinearGradient
-          style={styles.continueButtonBackground}
-          colors={["#17942b", "#35562a"]}
-        /> */}
+        
         <Text style={styles.continueButtonText}>Continue</Text>
       </Pressable>
     </View>

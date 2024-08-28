@@ -3,6 +3,8 @@ import { Text, StyleSheet, View, Pressable, TextInput } from "react-native";
 import { Image } from "expo-image";
 // import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from '@react-navigation/native';
+import { FontSize, FontFamily, Color, GlobalStyles } from "../GlobalStyles";
+
 
 const Login = () => {
     const navigation = useNavigation();
@@ -24,32 +26,34 @@ const Login = () => {
 
             {/* Email Input */}
             <View style={styles.inputContainer}>
-                <Image
-                    style={styles.inputIcon}
-                    contentFit="cover"
-                    source={require("../assets/email.svg")}
-                />
-                <TextInput
-                    style={styles.input}
-                    placeholder="Yourname@gmail.com"
-                    placeholderTextColor="#B0B0B0"
-                />
-            </View>
+        <Image
+          style={styles.icon}
+          contentFit="cover"
+          source={require("../assets/email.svg")}
+        />
+        <TextInput
+          style={[styles.inputText, GlobalStyles.fontPoppinsRegular, GlobalStyles.colorWhite]}
+          placeholder="Yourname@gmail.com"
+          placeholderTextColor="#fff"
+          keyboardType="email-address"
+          autoCapitalize="none"
+        />
+      </View>
 
-            {/* Password Input */}
-            <View style={styles.inputContainer}>
-                <Image
-                    style={styles.inputIcon}
-                    contentFit="cover"
-                    source={require("../assets/password.svg")}
-                />
-                <TextInput
-                    style={styles.input}
-                    placeholder="Password"
-                    placeholderTextColor="#B0B0B0"
-                    secureTextEntry
-                />
-            </View>
+      <View style={styles.inputContainer}>
+        <Image
+          style={styles.icon}
+          contentFit="cover"
+          source={require("../assets/password.svg")}
+        />
+        <TextInput
+          style={[styles.inputText, GlobalStyles.fontPoppinsRegular, GlobalStyles.colorWhite]}
+          placeholder="your password"
+          placeholderTextColor="#fff"
+          keyboardType="email-address"
+          autoCapitalize="none"
+        />
+      </View>
 
             {/* Forgot Password */}
             <Pressable style={styles.forgotPasswordContainer}>
